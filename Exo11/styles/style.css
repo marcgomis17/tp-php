@@ -1,0 +1,12 @@
+#display{
+    display: flex;
+    text-align: justify;
+   /*  margin-left: 10%;
+    margin-right: 10%; */
+}
+
+.numbers{
+    flex: auto;
+    display: inline-block;
+    text-align: center;
+}
