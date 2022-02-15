@@ -22,10 +22,14 @@ function days($month, $year): int
 
 function is_date_correct($day, $month, $year): bool
 {
-    if ($day <= days($month, $year)) {
-        return true;
+    if ($day < 1 || $day > days($month, $year)) {
+        return false;
+    } else {
+        if ($month < 1 || $month > 12) {
+            return false;
+        }
     }
-    return false;
+    return true;
 }
 
 function check_form($value, $pos, array &$errors)
@@ -45,9 +49,26 @@ function check_form($value, $pos, array &$errors)
 
 function check_date($day, $month, $year, &$date_error)
 {
-    if (!is_date_correct($day, $month, $year) || $month < 1 || $month > 12) {
+    if (!is_date_correct($day, $month, $year)) {
         $date_error = "Date incorrecte";
     }
+}
+
+function previous_day(&$day, &$month, &$year)
+{
+    // echo is_date_correct($day - 1, $month, $year);
+    if (is_date_correct($day - 1, $month, $year)) {
+        $day = $day - 1;
+    } else {
+        if ($month == 1) {
+            $year = $year - 1;
+            $month = 12;
+            $day = days($month, $year);
+        }
+    }
+
+    // $day = $day - 1;
+    //echo days($month, $year);
 }
 
 function next_day(&$day, &$month, &$year)

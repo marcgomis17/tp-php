@@ -1,9 +1,9 @@
-#display{
+#output{
     display: flex;
     text-align: justify;
 }
 
-.numbers{
+.date{
     flex: auto;
     display: inline-block;
     text-align: center;
